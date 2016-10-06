@@ -1,0 +1,153 @@
+doctype html
+html(lang='fr')
+    head
+        meta(charset='utf-8')/
+        title(lang='en') Meet ExpressJS
+
+        link(rel='stylesheet', href='css/bootstrap.min.css')/
+
+    body
+        main.container
+            header(class='row page-header')
+                h1.col-md-12
+                    span(lang='en') Meet ExpressJS
+                    small
+                        Votre nouveau super-coupaing
+            section.content row
+                h2.hidden
+                    Un exercice haut en couleurs…
+
+                .col-md-4
+                    h3
+                        L'album des coupaings
+
+                    var attributes={};
+                    attribtes.class='row';
+                    div#buddies-container&attributes(attributes)
+
+                    if(count(aBuddies))
+                        var aBuddies=[];
+
+                        each aBuddy in aBuddies
+                            img= aBuddy
+                            
+                            .col-md-4
+                                div(class='thumbnail', title='sDescription'
+                                    img(
+                                        src='http://api.adorable.io/avatars/90/sName.png'
+                                        alt='Avatar de sName'
+                                        width='90'
+                                        height='90'
+                                    )/
+                                    .caption
+                                        != '<strong>sName</strong>'
+                        else
+                        .col-md-12
+                            .well
+                                Vous n'avez pas encore ajouté de coupaing !
+
+                .col-md-4
+                    h3
+                        Ajouter un coupaing
+                    form(action='./', method='post')
+                        fieldset
+
+                        if(bHasErrors)
+                             var classes=['alert', 'alert-danger']
+                                div(class=classes)
+                                    != '<strong>Oops !</strong>'
+                                    On dirait que vous avez oublié de remplir chaque champs du formulaire !
+
+                            div(class='form-group
+                                if(bHasErrors && !sName)
+                                    'has-error'
+                                else
+                                    ''
+                            )
+                                label(class='control-label', for='name')
+                                    Nom:
+                                input(
+                                    type='text'
+                                    class='form-control'
+                                    name='name' 
+                                    placeholder='Nom du coupaing' 
+                                    value='
+                                        if(bHasErrors)
+                                            sName
+                                        else
+                                            ''
+                                        '
+                                )/
+                            div(class='form-group
+                                if(bHasErrors && !sDescription)
+                                    'has-error'
+                                else
+                                    ''
+                            )
+                                label(class='control-label', for='description')
+                                    Description:
+                                textarea(
+                                    class='form-control'
+                                    name='description' 
+                                    placeholder='Description du coupaing'
+
+                                    if(bHasErrors)
+                                        sDescription
+                                    else
+                                        ''
+                                )
+                                p.help-block
+                                    Faites court, on manque de place !
+                            .text-center
+                                button(type='submit', class='btn btn-info')
+                                    Ajouter un coupaing
+
+                    <hr />
+                    h3
+                        Supprimer les coupaings
+                    p
+                        Ils seront perdus à jamais, mais vous pourrez toujours en créer d'autres…
+                    .text-center
+                        a(href='./?clean', class='btn btn-danger')
+                            Supprimer les coupaings
+
+                .col-md-4
+                    h3
+                        Qu'est-ce qui se passe ici ?
+                    p
+                        != 'Sur cette page, un script PHP affiche une série de <em>coupaings</em>, stockés dans un fichier json.'
+                    p
+                        Un formulaire permet d'ajouter un nouveau coupaing et de la sauvegarder, toujours via PHP.
+                    <hr />
+                    h3
+                        Qu'est-ce qu'on va faire ?
+                    p
+                        != 'Chaque ajout de coupaing entraîne un rechargement de la page, c'est quand même pas très cool. Grâce à <strong>jQuery</strong>, nous allons faire cette opération en AJAX.'<br />
+                        + 'Ça va nous demander de modifier <em>un peu</em> le code PHP.'
+            <hr />
+            footer.row
+                var classDiv=['col-md-6', 'col-md-offset', 'text-right'];
+                div(class=classDiv)
+                    small
+                        RIA 2016-2017 - a(href='https://github.com/hepl-ria/meet-express') hepl-ria/meet-express
+
+        script(type='text/template', id='form-error-message')
+            div(class='alert alert-danger')
+                != '<strong>Oops !</strong>'
+                On dirait que vous avez oublié de remplir chaque champs du formulaire !
+
+        script(type='text/template', id='buddy-element')
+            .col-md-4
+                div(class='thumbnail', title='')
+                    img(
+                        src='' 
+                        alt='' 
+                        width='90' 
+                        height='90'
+                    )/
+                    .caption
+                        != '<strong></strong>'
+
+        script(src='js/jquery.min.js')
+        script(src='js/script.js')
+
